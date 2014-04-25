@@ -4,22 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Font;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
 import br.com.unip.aps.controller.AbstractController;
-import br.com.unip.aps.controller.ControllerChatHome;
 
-@Component
 public class ChatHome extends JFrame{
 
 	private static final long serialVersionUID = 1L;
@@ -28,9 +20,7 @@ public class ChatHome extends JFrame{
 	private JButton goToChat;
 	private JButton exit;
 	private JLabel clientLabel;
-	
-	@Qualifier("ControllerChatHome")
-	@Inject
+
 	private AbstractController chatHome;
 	
 	public ChatHome() {
@@ -62,10 +52,10 @@ public class ChatHome extends JFrame{
 		
 		init();
 		addListener();
+		
 	}
 	
 	public void addListener(){
-		System.out.println("passou aqui");
 		this.goToChat.addActionListener(chatHome);
 		this.exit.addActionListener(chatHome);
 	}
