@@ -14,15 +14,7 @@ public class ControllerChatHome extends AbstractController{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String command = e.getActionCommand();
-		
-		if (command.equalsIgnoreCase("gotochat")){
-			System.out.println("go to chat");
-			e.getClass().getName();
-		}else if (command.equalsIgnoreCase("exit")){
-			System.out.println("exit");
-		}
-		
+//		TODO implementar o action performed
 	}
 	
 }

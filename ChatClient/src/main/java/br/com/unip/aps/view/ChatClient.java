@@ -37,8 +37,6 @@ public class ChatClient extends JFrame{
 	private JButton sendButtom;
 
 	public ChatClient(String name){
-		super("Chat: " + name);
-
 	
 		this.clientName = name;
 
@@ -60,8 +58,8 @@ public class ChatClient extends JFrame{
 		textReceived.setFont(font);
 		JScrollPane scroll = new JScrollPane(textReceived);
 
-		getContentPane().add(BorderLayout.CENTER, scroll);
-		getContentPane().add(BorderLayout.SOUTH, chatPanel);
+//		getContentPane().add(BorderLayout.CENTER, scroll);
+//		getContentPane().add(BorderLayout.SOUTH, chatPanel);
 
 		configureNetwork();
 

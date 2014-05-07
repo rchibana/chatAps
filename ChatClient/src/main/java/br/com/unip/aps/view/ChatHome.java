@@ -4,85 +4,57 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Font;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import br.com.unip.aps.controller.AbstractController;
 import br.com.unip.aps.controller.ControllerChatHome;
+import br.com.unip.aps.controller.ControllerChatLogin;
+
 
 public class ChatHome extends JFrame{
 
 	private static final long serialVersionUID = 1L;
+	private Font font;
 	
-	private JTextField clientName;
-	private JButton goToChat;
-	private JButton exit;
-	private JLabel clientLabel;
-
 	private AbstractController chatHome;
 	
 	public ChatHome() {
 		
-		Font font = new Font("Arial", Font.PLAIN, 14);
-		
+		font = new Font("Arial", Font.PLAIN, 14);
 		chatHome = new ControllerChatHome();
 		
-		//Fields
-		this.clientLabel = new JLabel("Name: ");
-		this.clientLabel.setFont(font);
-		
-		this.clientName = new JTextField();
-		this.clientName.setFont(font);
-		
-		this.goToChat = new JButton("GoToChat");
-		this.goToChat.setActionCommand("gotochat");;
-		this.goToChat.setFont(font);
-		
-		this.exit = new JButton("Exit");
-		this.exit.setActionCommand("exit");
-		this.exit.setFont(font);
-		
-		Container homePanel = new JPanel();
-		
-		homePanel.setLayout(new BorderLayout());
-		homePanel.add(BorderLayout.WEST, exit);
-		homePanel.add(BorderLayout.EAST, goToChat);
-		
-		getContentPane().add(BorderLayout.NORTH,clientLabel);
-		getContentPane().add(BorderLayout.CENTER,clientName);
-		getContentPane().add(BorderLayout.SOUTH,homePanel);
+		ChatLogin login = new ChatLogin(font, new ControllerChatLogin());
+		setInterface(login);
 		
 		init();
-		addListener();
-	}
-	
-	public void addListener(){
-		System.out.println("teste");
-		
-		this.goToChat.addActionListener(chatHome);
-		this.exit.addActionListener(chatHome);
 	}
 	
 	private void init(){
 		//Initialize all attributes from chathome class
 		this.setResizable(false);
-		this.setSize(300,100);
-		this.setTitle("Chat Home");
+		this.setSize(500,500);
+		this.setTitle("Chat");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getContentPane().setLayout(new BorderLayout(0, 0));
 		this.setVisible(true);
+		this.setResizable(false);
+        this.setVisible(true);
+		
+		
 	}
 	
-	public static void main(String[] args) {
-		new ChatHome();
-	}
+	public void setInterface(JPanel panel){
+        getContentPane().removeAll();
+        getContentPane().add(BorderLayout.CENTER, panel);
+        getContentPane().validate();
+        getContentPane().repaint();
+        panel.setFocusable(true);
+        panel.requestFocusInWindow();
+    }
 	
 }
