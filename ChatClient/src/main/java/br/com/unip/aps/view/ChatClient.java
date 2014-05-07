@@ -24,10 +24,6 @@ import javax.swing.JTextField;
 
 public class ChatClient extends JFrame{
 
-	/**
-	 * 
-	 */
-	
 	private static final long serialVersionUID = 1L;
 
 	private String clientName;

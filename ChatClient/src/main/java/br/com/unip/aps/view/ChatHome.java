@@ -4,13 +4,19 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Font;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import br.com.unip.aps.controller.AbstractController;
+import br.com.unip.aps.controller.ControllerChatHome;
 
 public class ChatHome extends JFrame{
 
@@ -27,6 +33,8 @@ public class ChatHome extends JFrame{
 		
 		Font font = new Font("Arial", Font.PLAIN, 14);
 		
+		chatHome = new ControllerChatHome();
+		
 		//Fields
 		this.clientLabel = new JLabel("Name: ");
 		this.clientLabel.setFont(font);
@@ -34,10 +42,12 @@ public class ChatHome extends JFrame{
 		this.clientName = new JTextField();
 		this.clientName.setFont(font);
 		
-		this.goToChat = new JButton("Go to Chat");
+		this.goToChat = new JButton("GoToChat");
+		this.goToChat.setActionCommand("gotochat");;
 		this.goToChat.setFont(font);
 		
 		this.exit = new JButton("Exit");
+		this.exit.setActionCommand("exit");
 		this.exit.setFont(font);
 		
 		Container homePanel = new JPanel();
@@ -52,10 +62,11 @@ public class ChatHome extends JFrame{
 		
 		init();
 		addListener();
-		
 	}
 	
 	public void addListener(){
+		System.out.println("teste");
+		
 		this.goToChat.addActionListener(chatHome);
 		this.exit.addActionListener(chatHome);
 	}
