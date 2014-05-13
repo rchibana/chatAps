@@ -3,6 +3,7 @@ package br.com.unip.aps.view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,28 +20,29 @@ public class ChatHome extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private Font font;
+	private String name;
 	
-	private AbstractController chatHome;
+	private AbstractController controller;
 	
-	public ChatHome() {
+	public ChatHome(Font font, String name, AbstractController controller) {
 		
-		font = new Font("Arial", Font.PLAIN, 14);
-		chatHome = new ControllerChatHome();
-		
-		ChatLogin login = new ChatLogin(font, new ControllerChatLogin());
-		setInterface(login);
+//		ChatLogin login = new ChatLogin(font, new ControllerChatLogin());
+//		setInterface(login);
+		this.font = font;
+		this.name = name;
 		
 		init();
 	}
 	
 	private void init(){
 		//Initialize all attributes from chathome class
+//		this.getContentPane().setLayout(new GridBagLayout());
+		
 		this.setResizable(false);
 		this.setSize(500,500);
 		this.setTitle("Chat");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setLayout(new BorderLayout(0, 0));
 		this.setVisible(true);
 		this.setResizable(false);
         this.setVisible(true);
@@ -50,7 +52,8 @@ public class ChatHome extends JFrame{
 	
 	public void setInterface(JPanel panel){
         getContentPane().removeAll();
-        getContentPane().add(BorderLayout.CENTER, panel);
+        getContentPane().add(panel);
+        getContentPane().setSize(panel.getWidth(), panel.getHeight());
         getContentPane().validate();
         getContentPane().repaint();
         panel.setFocusable(true);
