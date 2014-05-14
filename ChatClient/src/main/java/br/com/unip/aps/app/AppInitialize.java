@@ -1,4 +1,4 @@
-package br.com.unip.aps.main;
+package br.com.unip.aps.app;
 
 import java.awt.Font;
 

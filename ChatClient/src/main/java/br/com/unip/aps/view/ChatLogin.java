@@ -71,7 +71,7 @@ public class ChatLogin extends JFrame{
 		this.goToChat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(! clientName.getText().replaceAll(" ", "").equalsIgnoreCase("")){
-					ControllerChatHome.instanceOf(font, clientName.getText()).chatHomeInit();
+					new ControllerChatHome(font, clientName.getText()).chatHomeInit();
 					dispose();
 				}else{
 					JOptionPane.showMessageDialog(null, "Please write your name in input name");

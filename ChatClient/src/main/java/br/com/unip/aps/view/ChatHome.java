@@ -26,8 +26,6 @@ public class ChatHome extends JFrame{
 	
 	public ChatHome(Font font, String name, AbstractController controller) {
 		
-//		ChatLogin login = new ChatLogin(font, new ControllerChatLogin());
-//		setInterface(login);
 		this.font = font;
 		this.name = name;
 		
@@ -43,7 +41,6 @@ public class ChatHome extends JFrame{
 		this.setTitle("Chat");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
 		this.setResizable(false);
         this.setVisible(true);
 		

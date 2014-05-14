@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  * 
  * */
 
-public class ChatClient extends JFrame{
+public class ChatClient extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,13 +40,11 @@ public class ChatClient extends JFrame{
 	
 		this.clientName = name;
 
-		Font font = new Font("Serif", Font.PLAIN, 14);
-
 		textToSend = new JTextField();
 		textToSend.setFont(font);
 
 		sendButtom = new JButton("Send");
-		sendButtom.setFont(font);
+		sendButtom.setFont(font); 
 		sendButtom.addActionListener(new SendListener());
 
 		Container chatPanel = new JPanel();
@@ -57,9 +55,6 @@ public class ChatClient extends JFrame{
 		textReceived = new JTextArea();
 		textReceived.setFont(font);
 		JScrollPane scroll = new JScrollPane(textReceived);
-
-//		getContentPane().add(BorderLayout.CENTER, scroll);
-//		getContentPane().add(BorderLayout.SOUTH, chatPanel);
 
 		configureNetwork();
 
@@ -74,11 +69,8 @@ public class ChatClient extends JFrame{
 	 * */
 	
 	public void init(){
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500,500);
-		this.setLocationRelativeTo(null);
-		this.setResizable(false);
-		this.setVisible(true);
+		this.setLayout(new BorderLayout());
 	}
 	
 	
