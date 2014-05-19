@@ -1,15 +1,20 @@
 package br.com.unip.aps.controller;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.swing.JOptionPane;
 
-import br.com.unip.aps.view.ChatClient;
+import br.com.unip.aps.view.ChatHome;
+import br.com.unip.aps.view.ChatLogin;
 
 public class ControllerChatLogin extends AbstractController{
 
-	public ControllerChatLogin(){
+	private ChatLogin chatLogin;
+	
+	public ControllerChatLogin(ChatLogin chatLogin){
 		super();
+		this.chatLogin = chatLogin;
 	}
 	
 	@Override
@@ -17,7 +22,15 @@ public class ControllerChatLogin extends AbstractController{
 		String command = e.getActionCommand();
 		
 		if (command.equalsIgnoreCase("gotochat")){
-			System.out.println("go to chat");
+			String name = chatLogin.getClientName();
+			Font font = chatLogin.getFont();
+			
+			if (name.replaceAll(" ", "").equalsIgnoreCase("")){
+				JOptionPane.showMessageDialog(null, "The name field is required");
+			}else{
+				new ChatHome(font, name);
+				chatLogin.dispose();
+			}
 		}else if (command.equalsIgnoreCase("exit")){
 			System.out.println("exit");
 		}

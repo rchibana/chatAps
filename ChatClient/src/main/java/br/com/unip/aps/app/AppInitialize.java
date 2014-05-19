@@ -2,7 +2,6 @@ package br.com.unip.aps.app;
 
 import java.awt.Font;
 
-import br.com.unip.aps.view.ChatHome;
 import br.com.unip.aps.view.ChatLogin;
 
 public class AppInitialize {
@@ -12,8 +11,7 @@ public class AppInitialize {
 		Font font = new Font("Arial", Font.PLAIN, 14);
 		
 		ChatLogin cl = new ChatLogin(font);
-		cl.setVisible(true);;
-		
+		cl.setVisible(true);
 		
 	}
 	

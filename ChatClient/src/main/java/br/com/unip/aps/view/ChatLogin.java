@@ -3,18 +3,14 @@ package br.com.unip.aps.view;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import br.com.unip.aps.controller.AbstractController;
-import br.com.unip.aps.controller.ControllerChatHome;
 import br.com.unip.aps.controller.ControllerChatLogin;
 
 public class ChatLogin extends JFrame{
@@ -24,10 +20,9 @@ public class ChatLogin extends JFrame{
 	private JButton exit;
 	private JLabel clientLabel;
 	private Font font;
+	private AbstractController controller;
 	
 	public ChatLogin(Font font) {
-		
-		// TODO Implementar para abrir o layout no centro.
 		
 		this.font = font;
 		
@@ -50,6 +45,8 @@ public class ChatLogin extends JFrame{
 		this.exit.setActionCommand("exit");
 		this.exit.setFont(font);
 		
+		this.controller = new ControllerChatLogin(this);
+		
 		addPanels();
 		addListener();
 	}
@@ -67,24 +64,19 @@ public class ChatLogin extends JFrame{
 		this.add(BorderLayout.NORTH, inputPanel);
 	}
 	
+
 	private void addListener(){
-		this.goToChat.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(! clientName.getText().replaceAll(" ", "").equalsIgnoreCase("")){
-					new ControllerChatHome(font, clientName.getText()).chatHomeInit();
-					dispose();
-				}else{
-					JOptionPane.showMessageDialog(null, "Please write your name in input name");
-				}
-			}
-		});
-		
-		this.exit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Closed!");
-				System.exit(0);
-			}
-		});
+		this.goToChat.addActionListener(this.controller);
+		this.exit.addActionListener(this.controller);
+
+	}
+	
+	public String getClientName() {
+		return clientName.getText();
+	}
+	
+	public Font getFont() {
+		return font;
 	}
 	
 }
