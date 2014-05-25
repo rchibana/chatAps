@@ -33,7 +33,6 @@ public class ListeningClient implements Runnable{
 			}
 		} catch (Exception e) {
 			System.out.println("The client has closed the connection!");
-			System.out.println(e.getMessage());
 		}
 	}
 	
