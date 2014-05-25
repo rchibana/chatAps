@@ -37,7 +37,7 @@ public class ChatLogin extends JFrame{
 		this.clientName = new JTextField();
 		this.clientName.setFont(font);
 		
-		this.goToChat = new JButton("GoToChat");
+		this.goToChat = new JButton("Go");
 		this.goToChat.setActionCommand("gotochat");;
 		this.goToChat.setFont(font);
 		

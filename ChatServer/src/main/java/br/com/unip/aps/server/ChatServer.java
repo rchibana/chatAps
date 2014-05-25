@@ -18,7 +18,8 @@ public class ChatServer {
 			server = new ServerSocket(5000);
 			ListeningClient listeningClient;
 			writers = new ArrayList<PrintWriter>();
-	
+			System.out.println("The server is running");
+			
 			while(true){
 				Socket socket = server.accept();
 				listeningClient = new ListeningClient(socket,writers);
@@ -28,7 +29,7 @@ public class ChatServer {
 			}
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("Client connection closed");
 		}
 	}
 	

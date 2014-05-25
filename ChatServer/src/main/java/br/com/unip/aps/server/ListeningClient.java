@@ -33,7 +33,7 @@ public class ListeningClient implements Runnable{
 			}
 		} catch (Exception e) {
 			System.out.println("The client has closed the connection!");
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -52,7 +52,7 @@ public class ListeningClient implements Runnable{
 				writer.flush();
 			}catch (Exception e) {
 				System.out.println("Method: sendsToEveryone \n an error ocurred!!");
-				e.printStackTrace();
+				System.out.println(e.getMessage());
 			}
 		}
 	}

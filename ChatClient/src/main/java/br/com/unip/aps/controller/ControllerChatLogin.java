@@ -28,8 +28,12 @@ public class ControllerChatLogin extends AbstractController{
 			if (name.replaceAll(" ", "").equalsIgnoreCase("")){
 				JOptionPane.showMessageDialog(null, "The name field is required");
 			}else{
-				new ChatHome(font, name);
-				chatLogin.dispose();
+				if(name.length() > 19 ){
+					JOptionPane.showMessageDialog(null, "The name field can not contain more than 20 characters");
+				}else{
+					new ChatHome(font, name);
+					chatLogin.dispose();
+				}
 			}
 		}else if (command.equalsIgnoreCase("exit")){
 			System.out.println("exit");

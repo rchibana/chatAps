@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -51,14 +52,16 @@ public class ChatClient extends JPanel {
 
 		textReceived = new JTextArea();
 		textReceived.setFont(font);
+		textReceived.setWrapStyleWord(true);
+		textReceived.setLineWrap(true);
+		
+		this.setLayout(new BorderLayout());
+		this.setSize(500, 500);
 		
 		addPanel(new JScrollPane(textReceived));
 		
-		this.setLayout(new BorderLayout());
-		
-		this.setSize(500, 500);
 
-		 configureNetwork();
+		configureNetwork();
 
 	}
 
@@ -84,9 +87,10 @@ public class ChatClient extends JPanel {
 	private void configureNetwork() {
 		try {
 			socket = new Socket("127.0.0.1", 5000);
+			System.out.println("Conexão estabelecida");
 			writer = new PrintWriter(socket.getOutputStream());
 			reader = new Scanner(socket.getInputStream());
-			new Thread(new EscutarServidor()).start();
+			new Thread(new ServerListener()).start();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"Não foi possível estabelecer conexão com o servidor");
@@ -104,7 +108,7 @@ public class ChatClient extends JPanel {
 		}
 	}
 
-	private class EscutarServidor implements Runnable {
+	private class ServerListener implements Runnable {
 
 		public void run() {
 			try {

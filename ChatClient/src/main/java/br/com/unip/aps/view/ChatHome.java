@@ -7,15 +7,12 @@ import javax.swing.JFrame;
 public class ChatHome extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private Font font;
 	private String name;
 	private ChatClient chatClient;
 
 	public ChatHome(Font font, String name) {
 
-		this.font = font;
 		this.name = name;
-		
 		init();
 		
 		chatClient = new ChatClient(font, name);
