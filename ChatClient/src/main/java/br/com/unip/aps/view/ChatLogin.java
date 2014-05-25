@@ -15,6 +15,7 @@ import br.com.unip.aps.controller.ControllerChatLogin;
 
 public class ChatLogin extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	private JTextField clientName;
 	private JButton goToChat;
 	private JButton exit;

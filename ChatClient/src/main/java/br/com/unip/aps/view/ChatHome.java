@@ -4,18 +4,20 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 
+import br.com.unip.aps.model.User;
+
 public class ChatHome extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private String name;
+	private User user;
 	private ChatClient chatClient;
 
-	public ChatHome(Font font, String name) {
+	public ChatHome(Font font, User user) {
 
-		this.name = name;
+		this.user = user;
 		init();
 		
-		chatClient = new ChatClient(font, name);
+		chatClient = new ChatClient(font, user);
 		setInterface();
 
 	}
@@ -25,7 +27,7 @@ public class ChatHome extends JFrame {
 
 		this.setResizable(false);
 		this.setSize(500, 500);
-		this.setTitle("Chat: "+ this.name);
+		this.setTitle("Chat: "+ this.user.getName());
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
